@@ -1,0 +1,535 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Marsalforn Mariners FC</title>
+<style>
+:root {
+  --club-blue: #0b5ed7;
+  --club-yellow: #f2c200;
+  --light-bg: #f4f6f8;
+  --dark-text: #222;
+}
+
+body {
+  margin: 0;
+  font-family: Arial, sans-serif;
+  background-color: var(--light-bg);
+  color: var(--dark-text);
+  scroll-behavior: smooth;
+}
+
+header {
+  background: linear-gradient(135deg, var(--club-blue), var(--club-yellow));
+  color: white;
+  padding: 60px 20px 40px;
+  text-align: center;
+}
+
+nav {
+  position: fixed;
+  top: 0;
+  width: 100%;
+  background-color: var(--club-blue);
+  display: flex;
+  justify-content: center;
+  gap: 18px;
+  padding: 12px;
+  z-index: 1000;
+  flex-wrap: wrap;
+}
+
+nav a {
+  color: var(--club-yellow);
+  text-decoration: none;
+  font-weight: bold;
+}
+
+nav a:hover {
+  text-decoration: underline;
+}
+
+section {
+  padding: 140px 20px 50px;
+  max-width: 1100px;
+  margin: auto;
+}
+
+h2 {
+  color: var(--club-blue);
+  border-left: 6px solid var(--club-yellow);
+  padding-left: 10px;
+  margin-bottom: 10px;
+}
+
+.cards {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 20px;
+  margin-top: 20px;
+}
+
+.card {
+  background: white;
+  border-radius: 12px;
+  padding: 20px;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+  border-top: 5px solid var(--club-yellow);
+  text-align: left;
+}
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 20px;
+}
+
+th, td {
+  border: 1px solid #ccc;
+  padding: 12px;
+  text-align: center;
+}
+
+th {
+  background-color: var(--club-blue);
+  color: var(--club-yellow);
+}
+
+.kits-gallery {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px;
+  justify-content: center;
+}
+
+.kit-card {
+  background: white;
+  border-radius: 12px;
+  padding: 20px;
+  width: 300px;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+  border-top: 5px solid var(--club-yellow);
+  text-align: center;
+}
+
+.kit-card img {
+  max-width: 100%;
+  border-radius: 8px;
+}
+
+.contact-info {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 2px;
+  margin-top: 15px;
+}
+
+.socials a {
+  display: inline-block;
+  background-color: var(--club-blue);
+  color: var(--club-yellow);
+  padding: 16px 26px;
+  border-radius: 8px;
+  font-weight: bold;
+  text-decoration: none;
+  margin-top: 10px;
+}
+
+.socials a:hover {
+  background-color: var(--club-yellow);
+  color: var(--club-blue);
+}
+
+#back-to-top {
+  position: fixed;
+  bottom: 30px;
+  right: 30px;
+  padding: 12px 18px;
+  background-color: var(--club-blue);
+  color: var(--club-yellow);
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  display: none;
+  z-index: 1000;
+}
+
+footer {
+  background-color: var(--club-blue);
+  color: var(--club-yellow);
+  text-align: center;
+  padding: 20px;
+}
+
+/* Bigger Sponsors Section */
+#sponsors .cards {
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 40px;
+  margin-top: 40px;
+}
+
+#sponsors .card {
+  padding: 60px;
+  font-size: 1.4em;
+  text-align: center;
+}
+</style>
+</head>
+<body>
+<button id="subscribeBtn">
+  Subscribe for Updates
+</button>
+
+<style>
+  #subscribeBtn {
+    padding: 10px 20px;
+    font-size: 16px;
+    background-color: #0055a5; /* Blue */
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.2s;
+  }
+
+  #subscribeBtn:active {
+    background-color: #FFD700; /* Yellow when pressed */
+    color: black;
+  }
+
+  #subscribeBtn:hover {
+    opacity: 0.9;
+  }
+</style>
+
+<script>
+  document.getElementById('subscribeBtn').addEventListener('click', function() {
+    OneSignal.push(function() {
+      OneSignal.showNativePrompt();
+    });
+  });
+</script>
+
+<header style="display: flex; justify-content: center; align-items: center; gap: 20px; height: 150px;">
+  <!-- Logo on the left -->
+  <img src="logo.png" alt="Club Logo" width="180">
+
+  <!-- Text on the right -->
+  <div>
+    <h1 style="margin: 0;">Marsalforn Mariners Football Club</h1>
+    <p style="margin: 5px 0 0 0;">From The Sea We Rise</p>
+  </div>
+    <script src="https://cdn.onesignal.com/sdks/OneSignalSDK.js" async=""></script>
+ <script src="https://cdn.onesignal.com/sdks/OneSignalSDK.js" async=""></script>
+ <script>
+   window.OneSignal = window.OneSignal || [];
+   OneSignal.push(function() {
+     OneSignal.init({
+       appId: "YOUR_APP_ID",  // Replace with your OneSignal App ID
+       notifyButton: { enable: true },
+     });
+   });
+ </script>
+
+
+</header>
+
+
+<nav>
+  <a href="#about">About</a>
+  <a href="#news">News</a>
+  <a href="#fixtures">Fixtures</a>
+  <a href="#standings">Standings</a>
+  <a href="#team">Club Staff</a>
+  <a href="#kits">Kits</a>
+  <a href="#academy">Youth Academy</a>
+  <a href="#sponsors">Sponsors</a>
+  <a href="#media">Media</a>
+  <a href="#contact">Contact</a>
+</nav>
+
+<button id="back-to-top">Back to top</button>
+
+<main>
+<button id="subscribeBtn">Subscribe for Updates</button>
+<script>
+  document.getElementById('subscribeBtn').addEventListener('click', function() {
+    OneSignal.push(function() {
+      OneSignal.showNativePrompt();
+    });
+  });
+</script>
+<!-- ABOUT -->
+<section id="about" class="large-section">
+  <h2>About</h2>
+    <p>Welcome to Marsalforn Mariners FC!</p>
+<p>Based in the heart of Marsalforn, Gozo, we’re more than a football club we’re a community. Our mission is simple: grow the game, develop local talent, and bring people together through football. We compete in the Gozo Football Youth League and run a youth academy for U16 and U19 teams.</p>
+<br><br>
+<p>Youth Academy:</p>
+<p>Our academy is all about nurturing young players and preparing them for the big stage. Standout performers in our U16 and U19 squads have the chance to progress to the First Team, giving homegrown talent a real pathway to senior football. We’re proud that our First Team reflects our local roots while helping every player reach their full potential on and off the pitch.</p>
+<br><br>
+<p>Join the Mariners Family:</p>
+<p>Whether you’re a young player chasing your football dreams or a fan passionate about local sport, Marsalforn Mariners FC is the place to be. Together, we grow talent, celebrate the game, and strengthen our community.</p>
+</section>
+
+<!-- NEWS -->
+<section id="news" class="large-section">
+  <h2>Latest News</h2>
+  <div class="cards">
+  <article class="card">
+    <div style="text-align: center;">
+      <img src="logo.png" alt="Club Logo" width="80">
+      <h3>Calling All Football Players! (Senior Team)</h3>
+     </div>
+      <p>Marsalforn Mariners FC is excited to announce that we are recruiting players for our Senior Team: <br> Marsalforn Mariners F.C. <br><br> If you are over 16 and passionate about football, join our senior squad and take your game to the next level with us.</p>
+      <p><strong>Date:</strong>1-1-2026</p>
+      </article>
+    <article class="card">
+     <div style="text-align: center;">
+      <img src="logo.png" alt="Club Logo" width="80">
+      <h3>Calling All Football Players! (Under19)</h3>
+     </div>
+      <p>Marsalforn Mariners FC is excited to announce that we are recruiting players for our youth team: <br> Under 19 Team <br><br> We are also looking for talented players under 19 to strengthen our U19 team and be part of our growing club.</p>
+      <p><strong>Date:</strong> 1-1-2026</p>
+    </article>
+    <article class="card">
+     <div style="text-align: center;">
+      <img src="logo.png" alt="Club Logo" width="80">
+      <h3>Calling All Football Players! (Under16)</h3>
+     </div>
+      <p>Marsalforn Mariners FC is excited to announce that we are recruiting players for our youth team: <br> Under 16 Team <br><br> If you are under 16 and passionate about football, come join our squad and develop your skills with us!</p>
+      <p><strong>Date:</strong> 1-1-2026</p>
+    </article>
+    <article class="card">
+    <div style="text-align: center;">
+      <!--<img src="logo.png" alt="Club Logo" width="80">
+      <h3>Club Founded</h3>-->
+    </div>
+      <!--<p>Marsalforn Mariners FC is officially launched.</p>
+      <br>
+      <p><strong>President:</strong> Maxim Mizzi</p>
+      <p><strong>Vice President:</strong> To be appointed</p>
+      <p><strong>Secretary:</strong> To be appointed</p>
+      <p><strong>Vice Secretary:</strong> To be appointed</p>
+      <p><strong>Club Treasurer:</strong> To be appointed</p>
+      <p><strong>Media Manager:</strong> To be appointed</p>
+      <p><strong>Kit Manager:</strong> To be appointed</p>
+      <p><strong>Team Manager:</strong> To be appointed</p>
+      <br>
+      <p><strong>Head Coach:</strong> To be appointed</p>
+      <p><strong>Assistant Coach:</strong> To be appointed</p>
+      <p><strong>Goalkeeper Coach:</strong> To be appointed</p>
+      <p><strong>Club Physio:</strong> To be appointed</p>
+      <p><strong>Youth Academy Head Coach:</strong> To be appointed</p>
+      <br>
+      <p><strong>Date:</strong> 2026</p>-->
+    </article>
+    <!--<article class="card">
+     <div style="text-align: center;">
+      <img src="logo.png" alt="Club Logo" width="80">
+      <h3>Academy Registrations</h3>
+     </div>
+      <p>Registrations for the youth academy will soon be open.</p>
+      <p><strong>Date:</strong> 2026</p>
+    </article>-->
+    
+  </div>
+</section>
+
+<!-- FIXTURES -->
+<section id="fixtures" class="large-section">
+  <h2>First Team Fixtures</h2>
+  <table>
+    <thead><tr><th>League</th><th>Opponent</th><th>Date</th><th>Time</th></tr></thead>
+    <tbody>
+      <tr><td>Gozo Football League Second Division</td><td>TBC</td><td>TBC</td><td>TBC</td></tr>
+      <tr><td>Gozo Football League Second Division</td><td>TBC</td><td>TBC</td><td>TBC</td></tr>
+      <tr><td>Gozo Football League Second Division</td><td>TBC</td><td>TBC</td><td>TBC</td></tr>
+      <tr><td>Gozo Football League Second Division</td><td>TBC</td><td>TBC</td><td>TBC</td></tr>
+    </tbody>
+  </table>
+</section>
+
+<!-- STANDINGS -->
+<section id="standings" class="large-section">
+  <h2>Gozo Football League Second Division Standings 2026/27</h2>
+  <table>
+    <thead><tr><th>Team</th><th>Played</th><th>Wins</th><th>Draws</th><th>Losses</th><th>Points</th></tr></thead>
+    <tbody>
+      <tr><td>Marsalforn Mariners</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td></tr>
+      <tr><td>Xaghra United</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td></tr>
+      <tr><td>Zebbug Rovers</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td></tr>
+      <tr><td>Oratory Youths</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td></tr>
+      <tr><td>Saint Lawrence Spurs</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td></tr>
+      <tr><td></td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td></tr>
+    </tbody>
+  </table>
+</section>
+
+ <!-- Club Staff Section -->
+  <section id="team" class="large-section">
+    <h2>Club Staff</h2>
+    <div class="cards">
+      <article class="card"><h3>Team Manager</h3><p>To be announced in the coming weeks</p></article>
+      <article class="card"><h3>Head Coach</h3><p>To be announced in the coming weeks</p></article>
+      <article class="card"><h3>Assistant Coach</h3><p>To be announced in the coming weeks</p></article>
+      <article class="card"><h3>Goalkeeper Coach</h3><p>To be announced in the coming weeks</p></article>
+      <!--<article class="card"><h3>Club Secretary</h3><p>To be announced</p></article>
+      <article class="card"><h3>Kit Manager</h3><p>To be announced</p></article>
+      <article class="card"><h3>Head of Media</h3><p>To be announced</p></article>
+      <article class="card"><h3>Club Treasurer</h3><p>To be announced</p></article>-->
+    </div>
+  </section>
+
+<!-- KITS -->
+<section id="kits" class="large-section">
+  <h2>Kits</h2>
+  <p>Home and Away kits will be available soon.</p>
+  <div class="kits-gallery">
+    <div class="kit-card"><img src="home-kit.png" alt="Home Kit"><h3>Home Kit</h3><p>Yellow and Blue Design</p></div>
+    <div class="kit-card"><img src="away-kit.png" alt="Away Kit"><h3>Away Kit</h3><p>Alternate Colors - Available Soon</p></div>
+  </div>
+</section>
+
+<!-- YOUTH ACADEMY -->
+<section id="academy" class="large-section">
+  <h2>Youth Academy</h2>
+  <div class="cards">
+    <article class="card">
+      <img src="logo.png" alt="Club Logo" width="50">
+      <h3>Under 16 Team</h3>
+      <p>Coach: To be appointed</p>
+      <h4>Fixtures</h4>
+      <table>
+        <thead><tr><th>Competition</th><th>Opponent</th><th>Date</th><th>Time</th></tr></thead>
+        <tbody>
+          <tr><td>GOZO Youth FA U16</td><td>TBC</td><td>TBC</td><td>TBC</td></tr>
+          <tr><td>GOZO Youth FA U16</td><td>TBC</td><td>TBC</td><td>TBC</td></tr>
+        </tbody>
+      </table>
+      <h4>Standings 2026/27</h4>
+      <table>
+        <thead><tr><th>Team</th><th>Played</th><th>Wins</th><th>Draws</th><th>Losses</th><th>Points</th></tr></thead>
+        <tbody>
+          <tr><td>Marsalforn Mariners U16</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td></tr>
+          <tr><td>Nadur Youngsters U16</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td></tr>
+          <tr><td>Xewkija Tigers U16</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td></tr>
+          <tr><td>Qala Saints U16</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td></tr>
+          <tr><td>Sannat Lions U16</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td></tr>
+          <tr><td>Ghansielem U16</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td></tr>
+          <tr><td>S.K. Victoria Wonderers U16</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td></tr>
+          <tr><td>Oratory Youths U16</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td></tr>
+          <tr><td>Kercem Ajax U16</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td></tr>
+        </tbody>
+      </table>
+    </article>
+    <article class="card">
+      <img src="logo.png" alt="Club Logo" width="50">
+      <h3>Under 19 Team</h3>
+      <p>Coach: To be appointed</p>
+      <h4>Fixtures</h4>
+      <table>
+        <thead><tr><th>Competition</th><th>Opponent</th><th>Date</th><th>Time</th></tr></thead>
+        <tbody>
+          <tr><td>GOZO Youth FA U19</td><td>TBC</td><td>TBC</td><td>TBC</td></tr>
+          <tr><td>GOZO Youth FA U19</td><td>TBC</td><td>TBC</td><td>TBC</td></tr>
+        </tbody>
+      </table>
+      <h4>Standings 2026/27</h4>
+      <table>
+        <thead><tr><th>Team</th><th>Played</th><th>Wins</th><th>Draws</th><th>Losses</th><th>Points</th></tr></thead>
+        <tbody>
+          <tr><td>Marsalforn Mariners U19</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td></tr>
+          <tr><td>Nadur Ghansielem U19</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td></tr>
+          <tr><td>Xewkija Tigers U19</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td></tr>
+          <tr><td>Oratory Youths U19</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td></tr>
+          <tr><td>Kercem Zebbug U19</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td></tr>
+          <tr><td>Qala Sannat U19</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td></tr>
+          <tr><td>SKVW Xaghra U19</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td></tr>
+        </tbody>
+      </table>
+    </article>
+  </div>
+</section>
+
+<!-- SPONSORS -->
+<section id="sponsors" class="large-section">
+  <h2>Sponsors & Partners</h2>
+  <p>We’re proud to be supported by local businesses and organizations that share our passion for football and community. Their support helps us grow our club, develop young talent, and keep the spirit of the game alive in Marsalforn and Gozo.</p>
+  <div class="cards">
+    <article class="card"><img src="" alt="Sponsor" width="50"></article>
+    <article class="card"><img src="" alt="Sponsor" width="50"></article>
+    <article class="card"><img src="" alt="Sponsor" width="50"></article>
+    <article class="card"><img src="" alt="Sponsor" width="50"></article>
+    <article class="card"><img src="" alt="Sponsor" width="50"></article>
+    <article class="card"><img src="" alt="Sponsor" width="50"></article>
+  </div>
+</section>
+
+<section id="media" style="padding: 50px; background-color: #f4f4f4; text-align: left;">
+  <h2>Media</h2>
+  <p>Stay connected with all the action from Marsalforn Mariners FC!</p>
+
+  <!-- Photo Gallery -->
+  <h3>Photo Gallery</h3>
+  <div style="display: flex; flex-wrap: wrap; justify-content: center; gap: 10px;">
+    <img src="photo1.jpg" alt="Match Photo 1" style="width: 200px; height: auto; border-radius: 5px;">
+    <img src="photo2.jpg" alt="Match Photo 2" style="width: 200px; height: auto; border-radius: 5px;">
+    <img src="photo3.jpg" alt="Match Photo 3" style="width: 200px; height: auto; border-radius: 5px;">
+  </div>
+
+  <!-- Video Highlights -->
+  <h3 style="margin-top: 30px;">Video Highlights</h3>
+  <div style="display: flex; justify-content: center; gap: 20px; flex-wrap: wrap;">
+    <iframe width="300" height="200" src="https://www.youtube.com/embed/VIDEO_ID1" title="Video 1" frameborder="0" allowfullscreen></iframe>
+    <iframe width="300" height="200" src="https://www.youtube.com/embed/VIDEO_ID2" title="Video 2" frameborder="0" allowfullscreen></iframe>
+    <iframe width="300" height="200" src="https://www.youtube.com/embed/VIDEO_ID2" title="Video 2" frameborder="0" allowfullscreen></iframe>
+  </div>
+</section>
+
+    
+<!-- CONTACT -->
+<section id="contact" class="large-section">
+  <h2>Contact Us</h2>
+  <p>If you would like to get in touch, you can reach us through the following methods:</p>
+  <div class="contact-info">
+    <div class="card"><h3>Email: info.marsalfornmarinersfc@gmail.com</h3><p></p></div>
+    <div class="card"><h3>Phone</h3><p></p></div>
+    <div class="card"><h3>Address</h3><p>Marsalforn, Malta, Gozo</p></div>
+  </div>
+  <div class="socials">
+    <h3>Follow Us</h3>
+    <a href="https://www.facebook.com/profile.php?id=61585961963245" target="_blank">Facebook</a>
+  </div>
+</section>
+
+</main>
+
+<footer>
+  <p>&copy; 2026 Marsalforn Mariners F.C. All rights reserved.</p>
+</footer>
+
+<script>
+document.querySelectorAll('nav a').forEach(link => {
+  link.addEventListener('click', function(e){
+    e.preventDefault();
+    const target = document.getElementById(this.getAttribute('href').substring(1));
+    if(target){ target.scrollIntoView({behavior: 'smooth'}); }
+  });
+});
+
+const backToTop = document.getElementById('back-to-top');
+window.addEventListener('scroll', () => { 
+  backToTop.style.display = window.scrollY > 300 ? 'block' : 'none'; 
+});
+backToTop.addEventListener('click', () => { 
+  window.scrollTo({ top: 0, behavior: 'smooth' }); 
+});
+</script>
+
+</body>
+</html>
+
+
+
